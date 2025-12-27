@@ -1,0 +1,7 @@
+node_modules/
+VectorShift - Frontend Technical Assessment Instructions.pdf
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
