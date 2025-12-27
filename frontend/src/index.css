@@ -283,6 +283,11 @@ code {
   color: white;
 }
 
+.base-node-action-btn.confirm-delete:hover {
+  background: #dc2626;
+  color: white;
+}
+
 .base-node-content {
   padding: 12px;
   display: flex;
@@ -324,6 +329,200 @@ code {
 .base-node-content textarea {
   min-height: 60px;
   resize: vertical;
+}
+
+/* ========================================
+   Logic Node Styles
+   ======================================== */
+.logic-node-layout {
+  display: flex;
+  gap: 12px;
+  min-height: 120px;
+  align-items: stretch;
+}
+
+.logic-condition-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #a3942c;
+  padding: 20px 16px;
+  background: rgba(163, 148, 44, 0.1);
+  border-radius: 8px;
+  border: 2px solid #a3942c;
+}
+
+.logic-outputs-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 70px;
+  padding: 8px 0;
+}
+
+.logic-output-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.logic-output-btn.true {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 2px solid #10b981;
+}
+
+.logic-output-btn.false {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border: 2px solid #ec4899;
+}
+
+/* ========================================
+   LLM Node Styles
+   ======================================== */
+.llm-node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 80px;
+}
+
+.llm-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 4px;
+}
+
+.llm-input-row {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.llm-input-label {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #ede9fe;
+  color: #7c3aed;
+  border: 1px solid #c4b5fd;
+}
+
+.llm-description {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  padding: 8px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px dashed #e2e8f0;
+}
+
+/* ========================================
+   File Node Styles
+   ======================================== */
+.file-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  min-height: 60px;
+}
+
+.file-upload-zone:hover {
+  border-color: var(--accent-blue);
+  background: #eff6ff;
+}
+
+.file-upload-zone.dragging {
+  border-color: var(--accent-blue);
+  background: #dbeafe;
+  border-style: solid;
+}
+
+.file-upload-zone.has-file {
+  border-style: solid;
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+.file-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+}
+
+.file-placeholder .upload-icon {
+  color: #94a3b8;
+}
+
+.file-placeholder span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.file-selected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.file-selected .file-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.file-selected .file-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e293b;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-remove-btn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 16px;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.file-remove-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
 }
 
 /* ========================================
@@ -431,6 +630,26 @@ code {
    ======================================== */
 .react-flow {
   background: var(--bg-canvas) !important;
+}
+
+/* Light mode - dark cursors for visibility */
+.react-flow__pane {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/svg%3E") 12 12, grab;
+}
+
+.react-flow__pane:active,
+.react-flow__pane.dragging {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231f2937' stroke-width='2.5'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/svg%3E") 12 12, grabbing;
+}
+
+/* Dark mode - light cursors for visibility */
+[data-theme="dark"] .react-flow__pane {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e0f2fe' stroke-width='2'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/svg%3E") 12 12, grab;
+}
+
+[data-theme="dark"] .react-flow__pane:active,
+[data-theme="dark"] .react-flow__pane.dragging {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300d4ff' stroke-width='2.5'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/svg%3E") 12 12, grabbing;
 }
 
 .react-flow__background {
@@ -711,4 +930,498 @@ code {
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+.theme-toggle-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a5f, #0f2744);
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #60a5fa;
+  transition: all var(--transition-normal);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.theme-toggle-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-color: #60a5fa;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   Cyberpunk Dark Theme
+   ======================================== */
+[data-theme="dark"] {
+  /* Background Colors - Deep blue-black */
+  --bg-canvas: #0a0e1a;
+  --bg-toolbar: #0f1729;
+  --bg-node: #0f1729;
+  
+  /* Border Colors - Cyan/blue neon */
+  --border-subtle: #1e3a5f;
+  --border-node: #2563eb;
+  --node-border-hover: #00d4ff;
+  
+  /* Accent Colors - Neon tones */
+  --accent-primary: #00d4ff;
+  --accent-blue: #3b82f6;
+  --accent-green: #00ff88;
+  --accent-purple: #a855f7;
+  --accent-orange: #ff6b35;
+  --accent-pink: #ff0080;
+  --accent-cyan: #00d4ff;
+  --accent-yellow: #ffeb3b;
+  
+  /* Edge Colors - Neon */
+  --edge-success: #00d4ff;
+  --edge-error-1: #ff0055;
+  --edge-error-2: #ff00ff;
+  
+  /* Shadow Definitions - Neon glow */
+  --shadow-node: 0 0 15px rgba(0, 212, 255, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 0 25px rgba(0, 212, 255, 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-button: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+/* Dark Mode Body Background */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #0a0e1a 100%);
+}
+
+/* Dark Mode Toolbar */
+[data-theme="dark"] .pipeline-toolbar {
+  background: linear-gradient(180deg, #0f1729 0%, #0a0e1a 100%);
+  border-bottom: 1px solid #1e3a5f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .toolbar-header {
+  border-bottom-color: #1e3a5f;
+}
+
+[data-theme="dark"] .toolbar-brand {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .toolbar-brand svg path {
+  fill: #00d4ff;
+}
+
+[data-theme="dark"] .toolbar-tabs {
+  border-bottom-color: #1e3a5f;
+}
+
+[data-theme="dark"] .toolbar-tab {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .toolbar-tab:hover {
+  color: #00d4ff;
+}
+
+[data-theme="dark"] .toolbar-tab.active {
+  color: #00d4ff;
+  border-bottom-color: #00d4ff;
+}
+
+/* Dark Mode Draggable Nodes */
+[data-theme="dark"] .draggable-node {
+  background: linear-gradient(145deg, #0f1729, #1a2744);
+  border: 1px solid #1e3a5f;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.1);
+}
+
+[data-theme="dark"] .draggable-node:hover {
+  border-color: #00d4ff;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+[data-theme="dark"] .draggable-node-label {
+  color: #94a3b8;
+}
+
+/* Dark Mode Node Icon Colors - Cyberpunk Neon */
+[data-theme="dark"] .icon-input { background: rgba(0, 212, 255, 0.2); color: #00d4ff; }
+[data-theme="dark"] .icon-output { background: rgba(0, 255, 136, 0.2); color: #00ff88; }
+[data-theme="dark"] .icon-llm { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+[data-theme="dark"] .icon-text { background: rgba(255, 107, 53, 0.2); color: #ff6b35; }
+[data-theme="dark"] .icon-note { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
+[data-theme="dark"] .icon-integration { background: rgba(255, 0, 128, 0.2); color: #ff0080; }
+[data-theme="dark"] .icon-logic { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+[data-theme="dark"] .icon-file { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+[data-theme="dark"] .icon-transform { background: rgba(0, 212, 255, 0.2); color: #00d4ff; }
+
+/* Dark Mode Base Node - With Neon Glow */
+[data-theme="dark"] .base-node {
+  background: linear-gradient(145deg, #0f1729, #1a2744);
+  border: 1px solid #2563eb;
+  box-shadow: 
+    0 0 15px rgba(0, 212, 255, 0.15),
+    0 0 30px rgba(59, 130, 246, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .base-node:hover {
+  border-color: #00d4ff;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.3),
+    0 0 40px rgba(0, 212, 255, 0.15),
+    0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .base-node-header {
+  background: linear-gradient(135deg, #1a2744 0%, #0f1729 100%);
+  border-bottom-color: #1e3a5f;
+}
+
+[data-theme="dark"] .base-node-header-title {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .base-node-action-btn {
+  color: #64748b;
+}
+
+[data-theme="dark"] .base-node-action-btn:hover {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+}
+
+[data-theme="dark"] .base-node-action-btn.delete:hover {
+  background: rgba(255, 0, 85, 0.2);
+  color: #ff0055;
+}
+
+[data-theme="dark"] .base-node-action-btn.confirm-delete {
+  background: #ff0055;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+}
+
+[data-theme="dark"] .base-node-action-btn.confirm-delete:hover {
+  background: #e6004d;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.7);
+}
+
+/* Dark Mode Form Elements */
+[data-theme="dark"] .base-node-content label {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .base-node-content input[type="text"],
+[data-theme="dark"] .base-node-content select,
+[data-theme="dark"] .base-node-content textarea {
+  background: #0a0e1a;
+  border-color: #1e3a5f;
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .base-node-content input[type="text"]:focus,
+[data-theme="dark"] .base-node-content select:focus,
+[data-theme="dark"] .base-node-content textarea:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+}
+
+/* Dark Mode Handles - Neon Glow */
+[data-theme="dark"] .react-flow__handle {
+  background: #0f1729 !important;
+  border-color: #00d4ff !important;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
+[data-theme="dark"] .react-flow__handle:hover {
+  background: #00d4ff !important;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
+}
+
+/* Dark Mode Canvas */
+[data-theme="dark"] .canvas-wrapper {
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #0a0e1a 100%);
+}
+
+[data-theme="dark"] .react-flow {
+  background: transparent !important;
+}
+
+[data-theme="dark"] .react-flow__background {
+  background: transparent !important;
+}
+
+/* Dark Mode Edges - Neon Glow */
+[data-theme="dark"] .react-flow__edge-path {
+  stroke: #3b82f6;
+  filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+}
+
+[data-theme="dark"] .edge-success .react-flow__edge-path {
+  stroke: #00d4ff !important;
+  filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.6));
+}
+
+[data-theme="dark"] .edge-error .react-flow__edge-path {
+  animation: pulse-edge-dark 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-edge-dark {
+  0%, 100% {
+    stroke: #ff0055;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.8));
+  }
+  50% {
+    stroke: #ff00ff;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.8));
+  }
+}
+
+/* Dark Mode MiniMap */
+[data-theme="dark"] .react-flow__minimap {
+  background: #0f1729 !important;
+  border-color: #1e3a5f !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .react-flow__minimap-mask {
+  fill: rgba(0, 212, 255, 0.1) !important;
+}
+
+/* Dark Mode Controls */
+[data-theme="dark"] .react-flow__controls {
+  border-color: #1e3a5f !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .react-flow__controls-button {
+  background: #0f1729 !important;
+  border-bottom-color: #1e3a5f !important;
+  fill: #94a3b8 !important;
+}
+
+[data-theme="dark"] .react-flow__controls-button:hover {
+  background: #1a2744 !important;
+  fill: #00d4ff !important;
+}
+
+[data-theme="dark"] .react-flow__controls-button svg {
+  fill: inherit !important;
+}
+
+/* Dark Mode Submit Section */
+[data-theme="dark"] .submit-section {
+  background: linear-gradient(180deg, #0a0e1a 0%, #0f1729 100%);
+  border-top-color: #1e3a5f;
+}
+
+[data-theme="dark"] .submit-button {
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+[data-theme="dark"] .submit-button:hover {
+  background: linear-gradient(135deg, #00e5ff, #00a3e0);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+}
+
+/* Dark Mode Edge Delete Button */
+[data-theme="dark"] .edge-delete-btn {
+  background: #0f1729;
+  border-color: #1e3a5f;
+  color: #94a3b8;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .edge-delete-btn:hover {
+  background: rgba(255, 0, 85, 0.2);
+  border-color: #ff0055;
+  color: #ff0055;
+}
+
+[data-theme="dark"] .edge-delete-btn.confirm {
+  background: #ff0055;
+  border-color: #ff0055;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+}
+
+/* Dark Mode Modal */
+[data-theme="dark"] .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .modal-content {
+  background: linear-gradient(145deg, #0f1729, #1a2744);
+  border-color: #2563eb;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+[data-theme="dark"] .modal-header {
+  background: linear-gradient(135deg, #1a2744 0%, #0f1729 100%);
+  border-bottom-color: #1e3a5f;
+}
+
+[data-theme="dark"] .modal-title {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .status-label {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .status-badge.success {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+[data-theme="dark"] .status-badge.error {
+  background: rgba(255, 0, 85, 0.15);
+  color: #ff0055;
+  border-color: rgba(255, 0, 85, 0.3);
+}
+
+[data-theme="dark"] .stat-item {
+  background: #0a0e1a;
+  border-color: #1e3a5f;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .stat-value {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .modal-footer {
+  background: #0f1729;
+  border-top-color: #1e3a5f;
+}
+
+[data-theme="dark"] .modal-btn.secondary {
+  background: #0a0e1a;
+  border-color: #1e3a5f;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .modal-btn.secondary:hover {
+  background: #1a2744;
+  color: #00d4ff;
+  border-color: #00d4ff;
+}
+
+/* Dark Mode Cycle Label */
+[data-theme="dark"] .cycle-detected-label {
+  background: linear-gradient(135deg, #ff0055, #ff00ff);
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+}
+
+/* Dark Mode Theme Toggle Button */
+[data-theme="dark"] .theme-toggle-btn {
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-color: #00d4ff;
+  color: #0a0e1a;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background: linear-gradient(135deg, #00e5ff, #00bcd4);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
+}
+
+/* ========================================
+   Dark Mode Node Components
+   ======================================== */
+
+/* Logic Node - Dark Mode */
+[data-theme="dark"] .logic-condition-box {
+  background: rgba(163, 148, 44, 0.15);
+  color: #ffd700;
+  border-color: #a3942c;
+}
+
+[data-theme="dark"] .logic-output-btn.true {
+  background: rgba(16, 185, 129, 0.2);
+  color: #00ff88;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .logic-output-btn.false {
+  background: rgba(236, 72, 153, 0.2);
+  color: #ff5577;
+  border-color: #ec4899;
+}
+
+/* LLM Node - Dark Mode */
+[data-theme="dark"] .llm-input-label {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+[data-theme="dark"] .llm-description {
+  background: rgba(0, 212, 255, 0.05);
+  color: #94a3b8;
+  border-color: rgba(30, 58, 95, 0.8);
+}
+
+/* File Node - Dark Mode */
+[data-theme="dark"] .file-upload-zone {
+  background: rgba(15, 23, 41, 0.8);
+  border-color: #1e3a5f;
+}
+
+[data-theme="dark"] .file-upload-zone:hover {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+[data-theme="dark"] .file-upload-zone.dragging {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.15);
+}
+
+[data-theme="dark"] .file-upload-zone.has-file {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+[data-theme="dark"] .file-placeholder {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .file-placeholder .upload-icon {
+  color: #64748b;
+}
+
+[data-theme="dark"] .file-selected .file-icon {
+  color: #00ff88;
+}
+
+[data-theme="dark"] .file-selected .file-name {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .file-remove-btn {
+  color: #64748b;
+}
+
+[data-theme="dark"] .file-remove-btn:hover {
+  background: rgba(255, 0, 85, 0.2);
+  color: #ff5577;
 }

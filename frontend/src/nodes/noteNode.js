@@ -31,6 +31,7 @@ export const NoteNode = ({ id, data }) => {
             value={text}
             onChange={handleChange}
             placeholder="Type your note here..."
+            className="nodrag nopan"
             style={{ 
                 border: 'none', 
                 background: 'transparent', 
@@ -39,7 +40,8 @@ export const NoteNode = ({ id, data }) => {
                 width: '100%', 
                 minHeight: '60px',
                 fontFamily: 'inherit',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                color: '#1e293b'
             }}
         />
       </div>

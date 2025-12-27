@@ -104,7 +104,8 @@ export const TextNode = ({ id, data }) => {
             <textarea 
               ref={textareaRef}
               value={currText} 
-              onChange={handleTextChange} 
+              onChange={handleTextChange}
+              className="nodrag nopan"
               style={{
                   width: '100%',
                   minHeight: '80px',
