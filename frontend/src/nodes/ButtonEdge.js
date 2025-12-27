@@ -18,6 +18,7 @@ export const ButtonEdge = ({
   targetPosition,
   style = {},
   markerEnd,
+  data,
 }) => {
   const { removeEdge } = useStore(selector, shallow);
   const [edgePath, labelX, labelY] = getBezierPath({
@@ -55,17 +56,32 @@ export const ButtonEdge = ({
         };
     }, []);
 
+  // Check if we should show cycle label
+  const showCycleLabel = data?.showCycleLabel;
+
   return (
     <>
       <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
       <EdgeLabelRenderer>
+        {/* Cycle Detected Label */}
+        {showCycleLabel && (
+          <div
+            style={{
+              position: 'absolute',
+              transform: `translate(-50%, -50%) translate(${labelX}px,${labelY - 20}px)`,
+              pointerEvents: 'none',
+            }}
+            className="nodrag nopan"
+          >
+            <span className="cycle-detected-label">⚠ Cycle Detected</span>
+          </div>
+        )}
+        
+        {/* Delete Button */}
         <div
           style={{
             position: 'absolute',
-            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-            fontSize: 12,
-            // everything inside EdgeLabelRenderer has no pointer events by default
-            // if you have an interactive element, set pointer-events: all
+            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY + (showCycleLabel ? 10 : 0)}px)`,
             pointerEvents: 'all',
           }}
           className="nodrag nopan"
@@ -73,24 +89,9 @@ export const ButtonEdge = ({
           <button
             title={isConfirming ? "Confirm delete" : "Delete edge"}
             onClick={(event) => onEdgeClick(event, id)}
-            style={{
-                width: '24px',
-                height: '24px',
-                background: isConfirming ? '#FF5252' : '#eee',
-                border: isConfirming ? '2px solid white' : '1px solid #777',
-                cursor: 'pointer',
-                borderRadius: '50%',
-                fontSize: '12px',
-                lineHeight: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: isConfirming ? 'white' : '#333',
-                transition: 'background 0.2s',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}
+            className={`edge-delete-btn ${isConfirming ? 'confirm' : ''}`}
           >
-            {isConfirming ? '×' : '×'}
+            ×
           </button>
         </div>
       </EdgeLabelRenderer>

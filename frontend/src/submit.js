@@ -24,9 +24,6 @@ export const SubmitButton = () => {
             alert(`Parsed Pipeline:\nNumber of Nodes: ${data.num_nodes}\nNumber of Edges: ${data.num_edges}\nIs DAG: ${data.is_dag}`);
 
             // Update edge styles based on DAG result
-            // We use the action we just added to the store directly
-            // But wait, the hook returns the selector. 
-            // We can just access the function from the state object.
             highlightEdges(data.is_dag);
 
         } catch (error) {
@@ -36,8 +33,17 @@ export const SubmitButton = () => {
     };
 
     return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
+        <div className="submit-section">
+            <button 
+                type="submit" 
+                className="submit-button"
+                onClick={handleSubmit}
+            >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Submit Pipeline
+            </button>
         </div>
     );
 }

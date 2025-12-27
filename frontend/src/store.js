@@ -67,69 +67,34 @@ export const useStore = create((set, get) => ({
       });
     },
     highlightEdges: (isDag) => {
-        const { nodes, edges } = get();
+        const { edges } = get();
         
         if (!isDag) {
-            set({
-                edges: edges.map(edge => ({
+            // Cycle detected - apply red-purple alternating error colors with cycle label
+            const newEdges = edges.map((edge, index) => {
+                const isEven = index % 2 === 0;
+                const color = isEven ? '#ef4444' : '#a855f7'; // Red : Purple
+                
+                return {
                     ...edge,
-                    animated: false,
-                    style: {}, // Revert to default
-                }))
+                    animated: true,
+                    className: 'edge-error',
+                    style: { stroke: color, strokeWidth: 3 },
+                    data: { ...edge.data, showCycleLabel: true },
+                };
             });
+            set({ edges: newEdges });
             return;
         }
 
-        // BFS to determine distance from sources
-        const adj = {};
-        const inDegree = {};
-        nodes.forEach(node => {
-            adj[node.id] = [];
-            inDegree[node.id] = 0;
-        });
-
-        edges.forEach(edge => {
-            if (adj[edge.source]) {
-                 adj[edge.source].push(edge.target);
-                 inDegree[edge.target] = (inDegree[edge.target] || 0) + 1;
-            }
-        });
-
-        const queue = nodes.filter(node => inDegree[node.id] === 0).map(node => ({ id: node.id, level: 0 }));
-        const nodeLevels = {};
-        
-        // If there are no nodes with 0 in-degree but it is a DAG (e.g. disconnected components?), 
-        // we might miss some. But for visualization, starting from sources is standard.
-        // For components without sources (cycles), we wouldn't be here (isDag is true).
-        
-        while (queue.length > 0) {
-            const { id, level } = queue.shift();
-            nodeLevels[id] = level;
-
-            if (adj[id]) {
-                adj[id].forEach(neighbor => {
-                    // We only visit if we haven't or if we found a longer path? 
-                    // Simple BFS is fine for alternating colors.
-                    // To ensure we process each edge once based on the source level:
-                    if (nodeLevels[neighbor] === undefined) {
-                         queue.push({ id: neighbor, level: level + 1 });
-                         nodeLevels[neighbor] = level + 1;
-                    }
-                });
-            }
-        }
-
-        const newEdges = edges.map(edge => {
-            const sourceLevel = nodeLevels[edge.source] || 0;
-            const isEvenLevel = sourceLevel % 2 === 0;
-            const color = isEvenLevel ? '#0000FF' : '#008000'; // Blue : Green
-
-            return {
-                ...edge,
-                animated: true,
-                style: { stroke: color, strokeWidth: 2 },
-            };
-        });
+        // DAG is valid - apply solid blue success color
+        const newEdges = edges.map(edge => ({
+            ...edge,
+            animated: true,
+            className: 'edge-success',
+            style: { stroke: '#3b82f6', strokeWidth: 2.5 },
+            data: { ...edge.data, showCycleLabel: false },
+        }));
 
         set({ edges: newEdges });
     },
