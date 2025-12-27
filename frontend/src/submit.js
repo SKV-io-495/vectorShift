@@ -11,7 +11,7 @@ export const SubmitButton = () => {
         const { nodes, edges, highlightEdges } = useStore.getState();
 
         try {
-            const response = await fetch('http://localhost:8000/pipelines/parse', {
+            const response = await fetch(process.env.REACT_APP_API_URL || 'http://localhost:8000/pipelines/parse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

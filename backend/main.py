@@ -5,9 +5,15 @@ from typing import List, Dict
 
 app = FastAPI()
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # CORS Configuration
 origins = [
     "http://localhost:3000",
+    os.getenv("FRONTEND_URL", "http://localhost:3000"),
 ]
 
 app.add_middleware(
